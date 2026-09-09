@@ -5,9 +5,32 @@
 
 body {
     font-family: monospace;
-    background-color: #c3d7b4;
+    background-color: #cdddc1;
     color: #7a6c5e;
 }
-hr{
-   border: 1px solid  #7a6c5e;
+
+hr {
+    border: 1px solid #7a6c5e;
+}
+
+.grupoComandos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-inline: 15px;
+    gap: 10px;
+}
+
+.cartaoComando {
+    width: calc(12.5% - 15px);
+    border: 1px solid #000000;
+    border-radius: 15px;
+    padding: 10px 5px;
+    background-color: beige;
+    transition: 150ms;
+}
+.cartaoComando:hover {
+    scale: 105%;
+    background-color:rgb(219, 219, 198);
+   transform: translateY(-5%);
 }
