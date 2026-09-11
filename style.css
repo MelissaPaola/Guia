@@ -2,11 +2,31 @@
     margin: 0px;
     padding: 0px;
 }
-
+.titulo{
+    text-align: center;
+}
 body {
     font-family: monospace;
-    background-color: #cdddc1;
+    background-color: #c5dce3;
     color: #7a6c5e;
+    font-size: 20px;
+}
+header {
+    height: 7vh;
+    background-color:beige ;
+}
+main {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    margin-block: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+footer {
+    height: 7vh;
+    background-color: beige;
 }
 
 hr {
@@ -21,6 +41,7 @@ hr {
     gap: 10px;
     flex-wrap: wrap;
 }
+
 .cartaoComando {
     width: calc(25% - 20px);
     border: 1px solid #000000;
@@ -29,8 +50,11 @@ hr {
     background-color: beige;
     transition: 150ms;
 }
+
 .cartaoComando:hover {
     scale: 105%;
-    background-color:rgb(219, 219, 198);
-   transform: translateY(-5%);
+    background-color: rgb(219, 219, 198);
+    transform: translateY(-5%);
+    box-shadow: -1px -1px 1px 1px #bd81dd,
+                 1px 1px 1px 1px rgb(78, 142, 226);
 }
