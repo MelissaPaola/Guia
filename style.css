@@ -2,59 +2,27 @@
     margin: 0px;
     padding: 0px;
 }
-.titulo{
-    text-align: center;
-}
-body {
-    font-family: monospace;
-    background-color: #c5dce3;
-    color: #7a6c5e;
-    font-size: 20px;
-}
-header {
-    height: 7vh;
-    background-color:beige ;
-}
-main {
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    margin-block: auto;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-footer {
-    height: 7vh;
-    background-color: beige;
-}
-
-hr {
-    border: 1px solid #7a6c5e;
-}
 
 .linhascartoes {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-inline: 15px;
-    gap: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
 }
-
-.cartaoComando {
-    width: calc(25% - 20px);
-    border: 1px solid #000000;
-    border-radius: 15px;
-    padding: 10px 5px;
-    background-color: beige;
-    transition: 150ms;
+.cartaocomando {
+    border: 1px solid gray;
+    border-radius: 20px;
+    width: 85vw;
+    height: 20vh;
 }
-
-.cartaoComando:hover {
-    scale: 105%;
-    background-color: rgb(219, 219, 198);
-    transform: translateY(-5%);
-    box-shadow: -1px -1px 1px 1px #bd81dd,
-                 1px 1px 1px 1px rgb(78, 142, 226);
+@media screen and (min-width: 768px) {
+    .linhascartoes {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+.cartaocomando {
+    border: 1px solid gray;
+    border-radius: 20px;
+    width: calc(25% - 15px);
+    min-height: fit-content;
 }
