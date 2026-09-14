@@ -3,26 +3,111 @@
     padding: 0px;
 }
 
+
+body {
+    background-color: #dfe3c5;
+    font-family: monospace;
+    color: #756454;
+
+}
+
 .linhascartoes {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
+.grupocomandos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-inline: 15px;
+    gap: 10px
+}
+
 .cartaocomando {
     border: 1px solid gray;
-    border-radius: 20px;
-    width: 85vw;
-    height: 20vh;
+    border-radius: 15px;
+    width: calc(12.5% - 15px);
+    padding: 10px 5px;
+    background-color: beige;
+    transition: 150ms;
+  
 }
+
 @media screen and (min-width: 768px) {
     .linhascartoes {
         flex-direction: row;
         flex-wrap: wrap;
     }
 }
+
 .cartaocomando {
     border: 1px solid gray;
     border-radius: 20px;
     width: calc(25% - 15px);
     min-height: fit-content;
 }
+
+.cartaoTitulo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icons {
+    width: 30px;
+    height: 30px;
+    fill: rgb(121, 115, 103);
+    stroke: black;
+    stroke-width: 5px;
+}
+
+@media only screen and (min-width: 401px) {
+    body {
+        background-color: #dfe3c5
+    }
+}
+@media only screen and(min-width: 600px) {
+    body {
+        font-size: x-large;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .grupocomandos {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .cartaocomando {
+        width: calc(50vw - 30px);
+    }
+
+    .icons {
+        height: 40px;
+        width: 40px;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .grupocomandos {
+        transition: 100ms;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .cartaocomando{
+        width: calc(50vw - 30px);
+    }
+
+    .cartaoComando:hover {
+        scale: 105%;
+        box-shadow: 1px 1px 1px 1px #756454;
+        transform: translateY(-5%);
+    }
+}
+@media only screen and (min-width: 1280px) {
+    .grupocomandos {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+
+
