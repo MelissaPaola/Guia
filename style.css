@@ -1,58 +1,58 @@
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
 
 body {
     background-color: #dfe3c5;
     font-family: monospace;
     color: #756454;
-
+}
+header {
+    padding: 30px 20px;
 }
 
+.titulo {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 16px;
+}
+/* CONTAINER DOS CARDS */
 .linhascartoes {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 15px;
+    margin: 15px;
 }
-.grupocomandos {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-inline: 15px;
-    gap: 10px
+.cartaoComando h3 {
+    overflow-wrap: anywhere;
 }
-
-.cartaocomando {
-    border: 1px solid gray;
-    border-radius: 15px;
-    width: calc(12.5% - 15px);
-    padding: 10px 5px;
-    background-color: beige;
-    transition: 150ms;
-  
+.cartaoComando p {
+    margin-top: 15px;
+    line-height: 1.5;
 }
-
-@media screen and (min-width: 768px) {
-    .linhascartoes {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-}
-
-.cartaocomando {
+/* CARD */
+.cartaoComando {
     border: 1px solid gray;
     border-radius: 20px;
-    width: calc(25% - 15px);
-    min-height: fit-content;
+    padding: 10px;
+    background-color: beige;
+    min-height: 150px;
+    transition: 150ms;
 }
 
+/* TÍTULO + ÍCONE */
 .cartaoTitulo {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
+/* ÍCONES */
 .icons {
     width: 30px;
     height: 30px;
@@ -61,53 +61,43 @@ body {
     stroke-width: 5px;
 }
 
-@media only screen and (min-width: 401px) {
-    body {
-        background-color: #dfe3c5
-    }
-}
-@media only screen and(min-width: 600px) {
-    body {
-        font-size: x-large;
-    }
-}
-@media only screen and (min-width: 768px) {
-    .grupocomandos {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
 
-    .cartaocomando {
-        width: calc(50vw - 30px);
+/* TABLET */
+@media screen and (min-width: 768px) {
+
+    .linhascartoes {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .icons {
-        height: 40px;
         width: 40px;
+        height: 40px;
     }
 }
-@media only screen and (min-width: 992px) {
-    .grupocomandos {
-        transition: 100ms;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .cartaocomando{
-        width: calc(50vw - 30px);
+
+
+/* COMPUTADOR */
+@media screen and (min-width: 992px) {
+
+    .linhascartoes {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .cartaoComando:hover {
-        scale: 105%;
+        scale: 1.05;
         box-shadow: 1px 1px 1px 1px #756454;
         transform: translateY(-5%);
     }
 }
-@media only screen and (min-width: 1280px) {
-    .grupocomandos {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
+footer {
+    text-align: center;
+    margin: 40px 20px 20px;
 }
 
+footer hr {
+    border: none;
+    border-top: 1px solid #756454;
+    margin-bottom: 15px;
+}
 
 
