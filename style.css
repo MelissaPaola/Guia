@@ -1,81 +1,103 @@
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-.titulo{
-    text-align: center;
-}
+
 body {
+    background-color: #dfe3c5;
     font-family: monospace;
-    background-color: #c5dce3;
-    color: #7a6c5e;
-    font-size: x-large;
+    color: #756454;
 }
 header {
-    height: 7vh;
-    background-color:beige ;
-}
-main {
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    margin-block: auto;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-footer {
-    height: 7vh;
-    background-color: beige;
+    padding: 30px 20px;
 }
 
-hr {
-    border: 1px solid #7a6c5e;
+.titulo {
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
+.subtitulo {
+    font-size: 16px;
+}
+/* CONTAINER DOS CARDS */
 .linhascartoes {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-inline: 15px;
-    gap: 10px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 15px;
 }
-
+.cartaoComando h3 {
+    overflow-wrap: anywhere;
+}
+.cartaoComando p {
+    margin-top: 15px;
+    line-height: 1.5;
+}
+/* CARD */
 .cartaoComando {
-    width: calc(25% - 20px);
-    border: 1px solid #000000;
-    border-radius: 15px;
-    padding: 10px 5px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 10px;
     background-color: beige;
+    min-height: 150px;
     transition: 150ms;
 }
 
-.cartaoComando:hover {
-    scale: 105%;
-    background-color: rgb(219, 219, 198);
-    transform: translateY(-5%);
-    box-shadow: -1px -1px 1px 1px #bd81dd,
-                 1px 1px 1px 1px rgb(78, 142, 226);
-}
-.img {
-    color: #7a6c5e;
-    width: 30px;
-    justify-content:end;
-    align-items:end;
-    flex-direction: row;
-}
-
+/* TÍTULO + ÍCONE */
 .cartaoTitulo {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.icone {
+/* ÍCONES */
+.icons {
     width: 30px;
     height: 30px;
-    fill: #080808;
-    stroke: #f3f2f2;
+    fill: rgb(121, 115, 103);
+    stroke: black;
     stroke-width: 5px;
 }
+
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+
+    .linhascartoes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .icons {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* COMPUTADOR */
+@media screen and (min-width: 992px) {
+
+    .linhascartoes {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cartaoComando:hover {
+        scale: 1.05;
+        box-shadow: 1px 1px 1px 1px #756454;
+        transform: translateY(-5%);
+    }
+}
+footer {
+    text-align: center;
+    margin: 40px 20px 20px;
+}
+
+footer hr {
+    border: none;
+    border-top: 1px solid #756454;
+    margin-bottom: 15px;
+}
+
+
