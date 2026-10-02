@@ -9,6 +9,7 @@ body {
     font-family: monospace;
     color: #756454;
 }
+
 header {
     padding: 30px 20px;
 }
@@ -21,38 +22,48 @@ header {
 .subtitulo {
     font-size: 16px;
 }
-/* CONTAINER DOS CARDS */
+
+/* ===== CONTAINER DOS CARDS ===== */
+
 .linhascartoes {
     display: grid;
     grid-template-columns: 1fr;
     gap: 15px;
-    margin: 15px;
+    margin: 15px 20px;
 }
+
 .cartaoComando h3 {
     overflow-wrap: anywhere;
 }
+
 .cartaoComando p {
     margin-top: 15px;
     line-height: 1.5;
 }
-/* CARD */
+
+/* ===== CARD ===== */
+
 .cartaoComando {
     border: 1px solid gray;
     border-radius: 20px;
     padding: 10px;
     background-color: beige;
     min-height: 150px;
+    display: flex;
+    flex-direction: column;
     transition: 150ms;
 }
 
-/* TÍTULO + ÍCONE */
+/* ===== TÍTULO + ÍCONE ===== */
+
 .cartaoTitulo {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* ÍCONES */
+/* ===== ÍCONES ===== */
+
 .icons {
     width: 30px;
     height: 30px;
@@ -61,8 +72,70 @@ header {
     stroke-width: 5px;
 }
 
+/* ===== BOTÃO MODO ESCURO ===== */
 
-/* TABLET */
+.btn-tema {
+    margin-top: 20px;
+    padding: 8px 16px;
+
+    background-color: #756454;
+    color: #dfe3c5;
+
+    border: none;
+    border-radius: 20px;
+
+    font-family: monospace;
+    font-size: 13px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-tema:hover {
+    transform: scale(1.05);
+}
+
+/* ===== MODO ESCURO ===== */
+
+body.modo-escuro {
+    background-color: #24231f;
+    color: #dfe3c5;
+}
+
+body.modo-escuro .cartaoComando {
+    background-color: #35332e;
+    border-color: #756454;
+}
+
+body.modo-escuro .btn-tema {
+    background-color: #dfe3c5;
+    color: #24231f;
+}
+
+body.modo-escuro .icons {
+    fill: #dfe3c5;
+    stroke: #756454;
+}
+
+body.modo-escuro footer hr {
+    border-color: #dfe3c5;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+    margin: 40px 20px 20px;
+}
+
+footer hr {
+    border: none;
+    border-top: 1px solid #756454;
+    margin-bottom: 15px;
+}
+
+/* ===== TABLET ===== */
+
 @media screen and (min-width: 768px) {
 
     .linhascartoes {
@@ -75,8 +148,8 @@ header {
     }
 }
 
+/* ===== COMPUTADOR ===== */
 
-/* COMPUTADOR */
 @media screen and (min-width: 992px) {
 
     .linhascartoes {
@@ -89,15 +162,3 @@ header {
         transform: translateY(-5%);
     }
 }
-footer {
-    text-align: center;
-    margin: 40px 20px 20px;
-}
-
-footer hr {
-    border: none;
-    border-top: 1px solid #756454;
-    margin-bottom: 15px;
-}
-
-
