@@ -1,45 +1,59 @@
-// ===== BOTÃO "COPIAR" EM CADA CARD =====
 
-const botoesCopiar = document.querySelectorAll(".btn-copiar")
-const toast = document.getElementById("toast")
+/* ===== MODO CLARO E ESCURO ===== */
 
-botoesCopiar.forEach(botao => {
-    botao.addEventListener("click", () => {
-        const comando = botao.dataset.comando
+const btnTema = document.getElementById("btnTema");
 
-        navigator.clipboard.writeText(comando)
-            .then(mostrarToast)
-            .catch(() => {
-                // fallback caso o navegador bloqueie a Clipboard API
-                alert("Não foi possível copiar automaticamente. Comando: " + comando)
-            })
-    })
-})
+function atualizarTema(escuro) {
+    document.body.classList.toggle("modo-escuro", escuro);
 
-function mostrarToast() {
-    toast.classList.add("mostrar")
+    btnTema.textContent = escuro
+        ? "☀️ Modo claro"
+        : "🌙 Modo escuro";
 
-    // esconde depois de 1.5s
-    clearTimeout(mostrarToast.timer)
-
-    mostrarToast.timer = setTimeout(() => {
-        toast.classList.remove("mostrar")
-    }, 1500)
+    localStorage.setItem("tema-guia", escuro ? "escuro" : "claro");
 }
 
+const temaSalvo = localStorage.getItem("tema-guia");
 
-// ===== BOTÃO MODO ESCURO =====
-
-const btnTema = document.getElementById("btnTema")
+atualizarTema(temaSalvo === "escuro");
 
 btnTema.addEventListener("click", () => {
+    const escuro = !document.body.classList.contains("modo-escuro");
+    atualizarTema(escuro);
+});
 
-    document.body.classList.toggle("modo-escuro")
 
-    if (document.body.classList.contains("modo-escuro")) {
-        btnTema.textContent = "☀️ Modo claro"
-    } else {
-        btnTema.textContent = "🌙 Modo escuro"
-    }
+/* ===== COPIAR COMANDOS ===== */
 
-})
+const botoesCopiar = document.querySelectorAll(".btn-copiar");
+const toast = document.getElementById("toast");
+
+botoesCopiar.forEach(botao => {
+    botao.addEventListener("click", async () => {
+        const comando = botao.dataset.comando;
+
+        try {
+            await navigator.clipboard.writeText(comando);
+            mostrarToast("Comando copiado! ✨");
+        } catch {
+            mostrarToast("Não foi possível copiar. Tente selecionar o comando.");
+        }
+    });
+});
+
+
+/* ===== NOTIFICAÇÃO ===== */
+
+let toastTimer;
+
+function mostrarToast(mensagem) {
+    toast.textContent = mensagem;
+    toast.classList.add("mostrar");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("mostrar");
+    }, 1800);
+}
+

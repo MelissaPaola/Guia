@@ -1,164 +1,323 @@
+
+/* ===== PALETA ===== */
+:root {
+    --fundo: #f7f6ee;
+    --superficie: #fffef9;
+    --card: #eef1e5;
+    --texto: #536747;
+    --texto-suave: #777a68;
+    --barra: #98ad70;
+    --borda: #dce3ce;
+    --codigo: #e7ecdd;
+    --sombra: 0 8px 24px rgba(66, 82, 51, 0.08);
+}
+
+body.modo-escuro {
+    --fundo: #242720;
+    --superficie: #2d3028;
+    --card: #34382e;
+    --texto: #e3e9d6;
+    --texto-suave: #c0c8b3;
+    --barra: #a5bc82;
+    --borda: #4c5541;
+    --codigo: #272b23;
+    --sombra: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== BASE ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #dfe3c5;
+    min-height: 100vh;
+    background: var(--fundo);
+    color: var(--texto);
     font-family: monospace;
-    color: #756454;
+    line-height: 1.6;
+    transition: background-color 0.25s, color 0.25s;
 }
 
 header {
-    padding: 30px 20px;
+    position: relative;
+    padding: 45px 7% 35px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--borda);
+    background:
+        radial-gradient(ellipse at 90% 10%,
+            var(--card), transparent 50%);
+}
+
+header::after {
+    content: "✧  ⋆  ♧";
+    position: absolute;
+    top: 20px;
+    right: 7%;
+    color: var(--barra);
+    font-size: 25px;
+    opacity: 0.8;
+    pointer-events: none;
 }
 
 .titulo {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -2px;
 }
 
 .subtitulo {
-    font-size: 16px;
+    max-width: 600px;
+    color: var(--texto-suave);
+    font-size: 14px;
 }
 
-/* ===== CONTAINER DOS CARDS ===== */
+/* ===== BOTÃO DE TEMA ===== */
+.btn-tema {
+    margin-top: 22px;
+    padding: 10px 17px;
+    background: var(--texto);
+    color: var(--fundo);
+    border: 1px solid var(--texto);
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-tema:hover {
+    transform: translateY(-2px);
+    opacity: 0.88;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--barra);
+    outline-offset: 4px;
+}
+
+/* ===== CONTEÚDO ===== */
+main {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 35px 24px;
+}
+
+main > h2 {
+    font-size: 22px;
+    margin: 0 0 22px;
+}
+
+.grupoComandos {
+    width: 100%;
+}
 
 .linhascartoes {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin: 15px 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
 }
 
-.cartaoComando h3 {
+/* ===== CARDS ===== */
+.cartaoComando {
+    position: relative;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 22px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    box-shadow: var(--sombra);
+    transition: transform 0.25s, border-color 0.25s;
+}
+
+.cartaoComando:hover {
+    transform: translateY(-4px);
+    border-color: var(--barra);
+}
+
+.cartaoTitulo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 48px;
+}
+
+.cartaoTitulo h3 {
+    min-width: 0;
     overflow-wrap: anywhere;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.icons {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    fill: var(--barra);
+    stroke: var(--texto);
+    stroke-width: 1.5px;
 }
 
 .cartaoComando p {
     margin-top: 15px;
-    line-height: 1.5;
+    margin-bottom: 22px;
+    color: var(--texto-suave);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.75;
 }
 
-/* ===== CARD ===== */
-
-.cartaoComando {
-    border: 1px solid gray;
-    border-radius: 20px;
-    padding: 10px;
-    background-color: beige;
-    min-height: 150px;
-    display: flex;
-    flex-direction: column;
-    transition: 150ms;
-}
-
-/* ===== TÍTULO + ÍCONE ===== */
-
-.cartaoTitulo {
-    display: flex;
-    justify-content: space-between;
+/* ===== BOTÃO COPIAR ===== */
+.btn-copiar {
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-}
-
-/* ===== ÍCONES ===== */
-
-.icons {
-    width: 30px;
-    height: 30px;
-    fill: rgb(121, 115, 103);
-    stroke: black;
-    stroke-width: 5px;
-}
-
-/* ===== BOTÃO MODO ESCURO ===== */
-
-.btn-tema {
-    margin-top: 20px;
-    padding: 8px 16px;
-
-    background-color: #756454;
-    color: #dfe3c5;
-
-    border: none;
-    border-radius: 20px;
-
-    font-family: monospace;
-    font-size: 13px;
-
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+    padding: 11px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--texto);
+    font-family: inherit;
+    font-size: 12px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
-.btn-tema:hover {
-    transform: scale(1.05);
+.btn-copiar:hover {
+    background: var(--codigo);
+    transform: translateY(-2px);
 }
 
-/* ===== MODO ESCURO ===== */
-
-body.modo-escuro {
-    background-color: #24231f;
-    color: #dfe3c5;
+.btn-copiar:active {
+    transform: scale(0.98);
 }
 
-body.modo-escuro .cartaoComando {
-    background-color: #35332e;
-    border-color: #756454;
+/* ===== AVISO DE CÓPIA ===== */
+#toast {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+    z-index: 1000;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    padding: 13px 20px;
+    border: 1px solid var(--borda);
+    border-radius: 30px;
+    background: var(--texto);
+    color: var(--fundo);
+    font-size: 13px;
+    box-shadow: var(--sombra);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 15px);
+    transition: opacity 0.2s, transform 0.2s;
 }
 
-body.modo-escuro .btn-tema {
-    background-color: #dfe3c5;
-    color: #24231f;
+#toast.mostrar {
+    opacity: 1;
+    transform: translate(-50%, 0);
 }
 
-body.modo-escuro .icons {
-    fill: #dfe3c5;
-    stroke: #756454;
-}
-
-body.modo-escuro footer hr {
-    border-color: #dfe3c5;
-}
-
-/* ===== FOOTER ===== */
-
+/* ===== RODAPÉ ===== */
 footer {
+    margin-top: 30px;
+    padding: 25px 20px;
     text-align: center;
-    margin: 40px 20px 20px;
+    color: var(--texto-suave);
+    font-size: 12px;
+    background: var(--card);
 }
 
 footer hr {
+    width: min(700px, 90%);
+    margin: 0 auto 18px;
     border: none;
-    border-top: 1px solid #756454;
-    margin-bottom: 15px;
+    border-top: 1px solid var(--borda);
+}
+
+footer p::before {
+    content: "✿  ";
+    color: var(--barra);
 }
 
 /* ===== TABLET ===== */
-
-@media screen and (min-width: 768px) {
-
+@media (max-width: 900px) {
     .linhascartoes {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .icons {
-        width: 40px;
-        height: 40px;
+    header {
+        padding: 38px 5% 30px;
     }
 }
 
-/* ===== COMPUTADOR ===== */
-
-@media screen and (min-width: 992px) {
-
-    .linhascartoes {
-        grid-template-columns: repeat(4, 1fr);
+/* ===== CELULAR ===== */
+@media (max-width: 560px) {
+    header {
+        padding: 35px 22px 28px;
     }
 
-    .cartaoComando:hover {
-        scale: 1.05;
-        box-shadow: 1px 1px 1px 1px #756454;
-        transform: translateY(-5%);
+    header::after {
+        top: 12px;
+        right: 18px;
+        font-size: 20px;
+    }
+
+    .titulo {
+        font-size: 34px;
+    }
+
+    .subtitulo {
+        max-width: 90%;
+        font-size: 13px;
+    }
+
+    main {
+        padding: 28px 17px;
+    }
+
+    main > h2 {
+        font-size: 19px;
+    }
+
+    .linhascartoes {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .cartaoComando {
+        padding: 20px;
+    }
+
+    .cartaoTitulo {
+        min-height: auto;
+    }
+
+    .cartaoComando p {
+        margin-top: 12px;
+    }
+}
+
+/* Respeita a preferência por menos animações */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
